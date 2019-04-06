@@ -102,7 +102,6 @@ export class PersonUpdateComponent implements OnInit {
 
     async savePerson(){
         this.person.birthday = moment(this.birthdayDp);
-        this.person.userLogin = 'admin';
         console.log(JSON.stringify(this.person.addresses));
         //this.person.userId = 1;
         if(this.person.id!=null){

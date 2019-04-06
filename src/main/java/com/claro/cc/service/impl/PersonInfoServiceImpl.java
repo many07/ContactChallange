@@ -6,12 +6,14 @@ import com.claro.cc.domain.PersonContact;
 import com.claro.cc.repository.AddressRepository;
 import com.claro.cc.repository.PersonContactRepository;
 import com.claro.cc.repository.PersonRepository;
+import com.claro.cc.repository.UserRepository;
 import com.claro.cc.service.PersonInfoService;
 import com.claro.cc.service.dto.PersonFullDTO;
 import com.claro.cc.service.mapper.PersonFullMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,9 +45,9 @@ public class PersonInfoServiceImpl implements PersonInfoService {
     @Override
     public PersonFullDTO save(PersonFullDTO personFullDTO) {
         log.debug("Request to save Person : {}", personFullDTO);
+        personFullDTO.setUserLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         Person person = personFullMapper.personFullDTOToPerson(personFullDTO);
-        person = personRepository.save(person);
-        Set<Address> addresses = person.getAddresses();
+        person = personRepository.save(person);Set<Address> addresses = person.getAddresses();
         System.out.println(addresses);
         for(Address a: addresses){
             System.out.println(a);
