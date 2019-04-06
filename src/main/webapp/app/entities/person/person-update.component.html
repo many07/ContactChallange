@@ -1,0 +1,129 @@
+
+        <!--<h3>Update and create a Person</h3>
+
+        <h4>Full Name</h4>
+    <input placeholder="Full Name" [(ngModel)]="person.fullname" class="form-control">
+    <h4>Document Number</h4>
+    <input placeholder="Document Number" [(ngModel)]="person.documentNumber" class="form-control">
+    <h4>Document Type</h4>
+    <input placeholder="Document Type" [(ngModel)]="person.documentType" class="form-control">
+    <h4>Birthhday</h4>
+    <input placeholder="Birthday" [(ngModel)]="person.birthday" class="form-control"> 
+    <h4>Gender</h4>
+    <input placeholder="Gender" [(ngModel)]="person.gender" class="form-control">
+
+    <button class="btn btn-primary" (click)="testPerson()">Save</button>-->
+
+    
+      <h2>Person {{person.id}}</h2>
+      <div class="row">
+        <div class="col-xs-2" style="width: 500px; padding: 8px">
+          <span class="label label-primary" style="font-weight: bold">Full Name</span>
+          <input type="text"  placeholder="Full Name" class="form-control" name="fullname" [(ngModel)]="person.fullname">
+        </div>
+        <div class="col-xs-2" style="width: 500px; padding: 8px">
+          <span class="label label-primary" style="font-weight: bold">Gender</span>
+          <p>
+            <input type="radio" class="radio" style="width: 40px" value="MALE" name="gender" [(ngModel)]="person.gender"> Male
+            <input type="radio" class="radio" style="width: 40px" value="FEMALE" name="gender" [(ngModel)]="person.gender"> Female
+          </p>
+        </div>
+        <div class="col-xs-2" style="width: 500px; padding: 8px">
+          <span class="label label-primary" style="font-weight: bold">Identification Number</span>
+          <input type="text" class="form-control" placeholder="Identification Number" name="documentNumber" [(ngModel)]="person.documentNumber">
+        </div>
+        <div class="col-xs-2" style="width: 500px; padding: 8px">
+          <span class="label label-primary" style="font-weight: bold">Identification Type</span>
+          <select class="browser-default custom-select" name="documentType" [(ngModel)]="person.documentType" >
+            <option value="ID" selected>ID</option>
+            <option value="PASSPORT">PASSPORT</option>
+          </select>
+        </div>
+        
+        <div class="col-xs-2" style="width: 500px; padding: 8px">
+          <span class="label label-primary" style="font-weight: bold">Birthday</span>
+          <input type="date" class="form-control" placeholder="Birthday" name="birthday" [(ngModel)]="birthdayDp">
+        </div>
+        
+      </div>
+      <div name="addresses">
+        <label class="h4">Addresses</label>
+        <div *ngFor="let address of person.addresses">
+          <div class="row">
+          <div class="col-xs-2">
+            <span>Country</span>
+            <select class="browser-default custom-select" [(ngModel)]="address.type" name="type">
+                <option value="MAIN" selected>MAIN</option>
+                <option value="HOME">HOME</option>
+                <option value="WORK">WORK</option>
+                <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+            <div class="col-xs-2">
+              <span>Country</span>
+              <input [(ngModel)]="address.country" name="country" class="form-control" placeholder="Country">
+            </div>
+            <div class="col-xs-2">
+              <span>State</span>
+              <input [(ngModel)]="address.state" name="state" class="form-control" placeholder="State">
+            </div>
+            <div class="col-xs-2">
+              <span>City</span>
+              <input [(ngModel)]="address.city" name="city" class="form-control" placeholder="City">
+            </div>
+            <div class="col-xs-2">
+              <span>Neighborhood</span>
+              <input [(ngModel)]="address.neighborhood" name="neighborhood" class="form-control" placeholder="Neighborhood">
+            </div>
+            <div class="col-xs-2">
+              <span>Street</span>
+              <input [(ngModel)]="address.street" name="street" class="form-control" placeholder="Street">
+            </div>
+            <div class="col-xs-2">
+              <span>Full Address</span>
+              <input [(ngModel)]="address.fullAddress" name="fullAddress" class="form-control" placeholder="Full Address">
+            </div>
+          </div>
+          </div>
+          <button class="btn btn-default" (click)="addAddress()" *ngIf='person.id==null'>+</button>
+        
+    </div>
+
+    <div>
+
+    </div>
+    <div name="contacts">
+      <label class="h4">Contacts</label>
+      <div class="row" *ngFor="let contact of person.personContacts">
+        <div class="col-xs-2">
+          <span>Type</span>
+          <select class="browser-default custom-select" [(ngModel)]="contact.type" name="contactType">
+              <option value="MAIL" selected>MAIL</option>
+              <option value="MAIN">MAIN</option>
+              <option value="CELLPHONE">CELLPHONE</option>
+              <option value="FAX">FAX</option>
+              <option value="PHONE">PHONE</option>
+              <option value="OTHER">OTHER</option>
+          </select>
+         </div>
+        <div class="col-xs-2">
+            <span>Value</span>
+            <input class="form-control" name="contactValue" [(ngModel)]="contact.value" placeholder="Value">
+        </div>
+        <div class="col-xs-2">
+            <span>Person Full Name</span>
+            <input class="form-control" name="contactPersonFullName" [(ngModel)]="contact.personFullname" placeholder="Full Name">
+        </div>
+      </div>
+      <button class="btn btn-default" (click)="addContact()" *ngIf='person.id==null'>+</button>
+    </div>
+    <div name="saveSection">
+      <button class="btn btn-primary" (click)="savePerson()">Guardar</button>
+  </div>
+  
+
+
+
+
+
+<!--<h1>Este es el componente para crear y actualizar un componente</h1>-->

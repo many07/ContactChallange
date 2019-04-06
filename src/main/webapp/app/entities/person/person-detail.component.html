@@ -1,0 +1,117 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="person">
+            <h2><span>Person</span> {{person.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fullname</span></dt>
+                <dd>
+                    <span>{{person.fullname}}</span>
+                </dd>
+            </dl>
+            <dl class="row-md jh-entity-details">
+                    <dt><span>Gender</span></dt>
+                    <dd>
+                        <span>{{person.gender}}</span>
+                    </dd>
+                </dl>
+                <dl class="row-md jh-entity-details">
+                        <dt><span>Document Type</span></dt>
+                        <dd>
+                            <span>{{person.documentType}}</span>
+                        </dd>
+                    </dl>
+                    <dl class="row-md jh-entity-details">
+                            <dt><span>Document Number</span></dt>
+                            <dd>
+                                <span>{{person.documentNumber}}</span>
+                            </dd>
+                        </dl>
+                    <dl class="row-md jh-entity-details">
+                                <dt><span>Birthday</span></dt>
+                                <dd>
+                                    <span>{{formatBirthday()}}</span>
+                                </dd>
+                            </dl>
+                    <label class="h4">Addresses</label>
+                    
+                            <div *ngFor="let address of person.addresses">
+                                    <div class="row">
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Type</span></dt>
+                                                <dd>
+                                                    <span>{{address.type}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Country</span></dt>
+                                                <dd>
+                                                    <span>{{address.country}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>State</span></dt>
+                                                <dd>
+                                                    <span>{{address.state}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>City</span></dt>
+                                                <dd>
+                                                    <span>{{address.city}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Street</span></dt>
+                                                <dd>
+                                                    <span>{{address.street}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Full Address</span></dt>
+                                                <dd>
+                                                    <span>{{address.fullAddress}}</span>
+                                                </dd>
+                                        </div>
+                                    </div>
+                            </div>
+                    <label class="h4">Contacts</label> 
+                            <div *ngFor="let contact of person.personContacts">
+                                <div class="row">
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Type</span></dt>
+                                                <dd>
+                                                    <span>{{contact.type}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Value</span></dt>
+                                                <dd>
+                                                    <span>{{contact.value}}</span>
+                                                </dd>
+                                        </div>
+                                        <div class="col-xs-2" style="margin: 8px">
+                                                <dt><span>Full Name</span></dt>
+                                                <dd>
+                                                    <span>{{contact.personFullname}}</span>
+                                                </dd>
+                                        </div>
+                                </div>
+                                    
+                            </div>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/person', person.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
